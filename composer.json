@@ -1,5 +1,5 @@
 {
-    "name": "judopay/judopay-sdk",
+    "name": "cristianplanidea/judopay-sdk",
     "type": "library",
     "description": "SDK for the Judopay API",
     "keywords": ["payment"],
