@@ -95,6 +95,34 @@ class Request
         return $guzzleResponse;
     }
 
+    /**
+     * Make a PUT request to the specified resource path and the provided data
+     * @param string $resourcePath
+     * @param array $data
+     * @return Response
+     */
+    public function put($resourcePath, $data)
+    {
+        $headers = $this->getHeaders();
+
+        try {
+            $guzzleResponse = $this->client->request(
+                'PUT',
+                $resourcePath,
+                [
+                    'headers'   => $headers,
+                    'json'      => $data
+                ]
+            );
+        } catch (BadResponseException $e) {
+            throw ApiException::factory($e);
+        } catch (GuzzleException $e) {
+            throw new ApiException($e->getMessage());
+        }
+
+        return $guzzleResponse;
+    }
+
     /*
      * Gets 'Authorization' header value
      */
